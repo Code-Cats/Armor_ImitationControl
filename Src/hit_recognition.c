@@ -307,6 +307,138 @@ void CAN_SetIDxTurnON_Task(AimorIDEnum id)
 
 
 /****************************************************
+name:CAN_SetID0Red2Blue_SendMsg
+function:发送裁判转蓝灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+uint8_t RefereeID0SetRedToBlueData1[18]={0x5a,0x02,0x00,0x01,0x00,0x01,0x0b,0x02 ,\
+							0x00,0x01,0x00,0x04,0x00,0x70,0x01,0x0B,\
+							0x1f,0x9a};	//已OK
+uint8_t RefereeID0SetRedToBlueData2[20]={0x5a,0x04,0x00,0x02,0x00,0x01,0x0b,0x02 ,\
+							0x00,0x01,0x00,0x05,0x00,0x96,0x00,0x00,\
+							0xff,0x00,0xa0,0xd0};	//已OK
+void CAN_SetID0Red2Blue_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x140,RefereeID0SetRedToBlueData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x140,RefereeID0SetRedToBlueData2,20);
+}
+
+
+/****************************************************
+name:CAN_SetID1Red2Blue_SendMsg //OK
+function:发送裁判转蓝灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+uint8_t RefereeID1SetRedToBlueData1[18]={0x5a,0x02,0x00,0x00,0x00,0x01,0x0b,0x02 ,\
+							0x01,0x01,0x00,0x04,0x00,0x73,0x01,0x0b,\
+							0x69,0xf1};	//OK
+uint8_t RefereeID1SetRedToBlueData2[20]={0x5a,0x04,0x00,0x01,0x00,0x01,0x0b,0x02 ,\
+							0x01,0x01,0x00,0x05,0x00,0x10,0x00,0x00,\
+							0xff,0x00,0x34,0x95};	//OK
+void CAN_SetID1Red2Blue_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x141,RefereeID1SetRedToBlueData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x141,RefereeID1SetRedToBlueData2,20);
+}
+
+/****************************************************
+name:CAN_SetID2Red2Blue_SendMsg //OK
+function:发送裁判转蓝灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+uint8_t RefereeID2SetRedToBlueData1[18]={0x5a,0x02,0x00,0x00,0x00,0x01,0x0b,0x02 ,\
+							0x02,0x01,0x00,0x04,0x00,0x3d,0x01,0x0b,\
+							0xd4,0x6d};	//OK
+uint8_t RefereeID2SetRedToBlueData2[20]={0x5a,0x04,0x00,0x01,0x00,0x01,0x0b,0x02 ,\
+							0x02,0x01,0x00,0x05,0x00,0x5e,0x00,0x00,\
+							0xff,0x00,0xc7,0x41};	//OK
+void CAN_SetID2Red2Blue_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x142,RefereeID2SetRedToBlueData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x142,RefereeID2SetRedToBlueData2,20);
+}
+
+/****************************************************
+name:CAN_SetID0Blue2Red_SendMsg
+function:发送裁判转红灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+//uint8_t RefereeID0SetBlueToRedData1[18]={0x5a,0x02,0x00,0x00,0x00,0x01,0x01,0x02 ,\
+//							0x00,0x01,0x00,0x04,0x00,0x35,0x01,0x01,\
+//							0x44, 0x3e};
+//uint8_t RefereeID0SetBlueToRedData2[20]={0x5a,0x04,0x00,0x01,0x00,0x01,0x01,0x02 ,\
+//							0x00,0x01,0x00,0x05,0x00,0x56,0xff,0x00,\
+//							0x00, 0x00, 0xec, 0x71};	//这个好像是全变红的//见1498行
+uint8_t RefereeID0SetBlueToRedData1[18]={0x5a,0x02,0x00,0x01,0x00,0x01,0x01,0x02 ,\
+							0x00,0x01,0x00,0x04,0x00,0xfb,0x01,0x01,\
+							0x68,0x21};	//已OK
+uint8_t RefereeID0SetBlueToRedData2[20]={0x5a,0x04,0x00,0x02,0x00,0x01,0x01,0x02 ,\
+							0x00,0x01,0x00,0x05,0x00,0x1d,0xff,0x00,\
+							0x00,0x00,0x5c,0x2f};	//已OK
+void CAN_SetID0Blue2Red_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x140,RefereeID0SetBlueToRedData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x140,RefereeID0SetBlueToRedData2,20);
+}
+
+/****************************************************
+name:CAN_SetID1Blue2Red_SendMsg 待验证
+function:发送裁判转红灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+uint8_t RefereeID1SetBlueToRedData1[18]={0x5a, 0x02, 0x00, 0x00, 0x00, 0x01, 0x01, 0x02,\
+							0x01, 0x01, 0x00, 0x04, 0x00, 0xf8, 0x01, 0x01,\
+							0x1e, 0x4a};
+uint8_t RefereeID1SetBlueToRedData2[20]={0x5a, 0x04, 0x00, 0x01, 0x00, 0x01, 0x01, 0x02,\
+							0x01, 0x01, 0x00, 0x05, 0x00, 0x9b, 0xff, 0x00,\
+							0x00, 0x00, 0xc8, 0x6a };	//这个好像是全变红的//见1498行
+void CAN_SetID1Blue2Red_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x141,RefereeID1SetBlueToRedData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x141,RefereeID1SetBlueToRedData2,20);
+}
+
+/****************************************************
+name:CAN_SetID2Blue2Red_SendMsg 待验证
+function:发送裁判转红灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+uint8_t RefereeID2SetBlueToRedData1[18]={0x5a, 0x02, 0x00, 0x00, 0x00, 0x01, 0x01, 0x02,\
+							0x02, 0x01, 0x00, 0x04, 0x00, 0xb6, 0x01, 0x01,\
+							0xa3, 0xd6};
+uint8_t RefereeID2SetBlueToRedData2[20]={0x5a, 0x04, 0x00, 0x01, 0x00, 0x01, 0x01, 0x02,\
+							0x02, 0x01, 0x00, 0x05, 0x00, 0xd5, 0xff, 0x00,\
+							0x00, 0x00, 0x3b, 0xbe };	//这个好像是全变红的//见1498行
+void CAN_SetID2Blue2Red_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x142,RefereeID2SetBlueToRedData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x142,RefereeID2SetBlueToRedData2,20);
+}
+
+///////////////////////////////////////////待完善/////////////////////////////////////////////
+
+
+
+
+/****************************************************
 name:RefereeSetRedToBlueData
 function:发送裁判转灯数据
 @param:void
@@ -339,8 +471,9 @@ void CAN_SetALLRedTurnOFF_SendMsg(void)
 	CAN_SendNormalMsg(&hcan,0xfe,RefereeSetALLRedTurnOFFData,20);
 }
 
+
 /****************************************************
-name:CAN_SetALLBlueTurnOFF_SendMsg
+name:CAN_SetALLBlueTurnOFF_SendMsg???
 function:发送裁判Blue Turn OFF灯数据
 @param:void
 @return:void
@@ -430,7 +563,7 @@ void CAN1_Hit_Analysis(CAN_RxHeaderTypeDef* rxMessage,CAN_RecvMsg *can_recvmsg)
 {		
 	//CAN_Receive(CAN1, CAN_FIFO0, rx_message);//读取数据  后移至bsp层
 	
-	switch(rxMessage->DLC)
+	switch(rxMessage->StdId)
 	{
 		case 0x150:	//弹丸击打数据
 		{

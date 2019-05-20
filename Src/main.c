@@ -122,6 +122,20 @@ int main(void)
 		 CAN_HeartBeat_SendMsg();
 		 while_time_record=time_2ms_count;
 	 }
+	 
+	 if(time_2ms_count>2500&&time_2ms_count%2500==0)
+	 {
+		
+		 CAN_SetID0Blue2Red_SendMsg();
+		 CAN_SetID1Blue2Red_SendMsg();
+		 CAN_SetID2Blue2Red_SendMsg();
+	 }
+	 else if(time_2ms_count>2500&&(time_2ms_count+1100)%2500==0)
+	 {
+		 CAN_SetID0Red2Blue_SendMsg();
+		 CAN_SetID1Red2Blue_SendMsg();
+		 CAN_SetID2Red2Blue_SendMsg();
+	 }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
