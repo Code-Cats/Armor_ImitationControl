@@ -54,6 +54,14 @@ void ALLAutoTurnON(void);
 
 void CAN_TurnONTEST_SendMsg(void);	//测试0x350包的作用
 
+void CAN_SetID0Blue2Red_SendMsg(void);
+void CAN_SetID1Blue2Red_SendMsg(void);
+void CAN_SetID2Blue2Red_SendMsg(void);
+
+void CAN_SetID0Red2Blue_SendMsg(void);
+void CAN_SetID1Red2Blue_SendMsg(void);
+void CAN_SetID2Red2Blue_SendMsg(void);
+	
 void CAN_SetAllRed2Blue_SendMsg(void);
 
 void CAN_SetALLRedTurnOFF_SendMsg(void);

@@ -123,19 +123,43 @@ int main(void)
 		 while_time_record=time_2ms_count;
 	 }
 	 
-	 if(time_2ms_count>2500&&time_2ms_count%2500==0)
+	 static uint8_t key_color_last=0;
+	 static uint8_t color_state=0;
+	 if(HAL_GPIO_ReadPin(KEY_COLOR_GPIO_Port,KEY_COLOR_Pin)==0&&key_color_last==1)
 	 {
-		
-		 CAN_SetID0Blue2Red_SendMsg();
-		 CAN_SetID1Blue2Red_SendMsg();
-		 CAN_SetID2Blue2Red_SendMsg();
+		 color_state=!color_state;
+		 if(color_state)
+		 {
+			CAN_SetID0Blue2Red_SendMsg();
+			CAN_SetID1Blue2Red_SendMsg();
+			CAN_SetID2Blue2Red_SendMsg();
+			 CAN_SetID3Blue2Red_SendMsg();
+		 }
+		 else
+		 {
+			CAN_SetID0Red2Blue_SendMsg();
+			CAN_SetID1Red2Blue_SendMsg();
+			CAN_SetID2Red2Blue_SendMsg();
+			 CAN_SetID3Red2Blue_SendMsg();
+		 }
+		 //change color
+		 
 	 }
-	 else if(time_2ms_count>2500&&(time_2ms_count+1100)%2500==0)
-	 {
-		 CAN_SetID0Red2Blue_SendMsg();
-		 CAN_SetID1Red2Blue_SendMsg();
-		 CAN_SetID2Red2Blue_SendMsg();
-	 }
+	 key_color_last=HAL_GPIO_ReadPin(KEY_COLOR_GPIO_Port,KEY_COLOR_Pin);
+	 
+//	 if(time_2ms_count>2500&&time_2ms_count%2500==0)
+//	 {
+//		
+//		 CAN_SetID0Blue2Red_SendMsg();
+//		 CAN_SetID1Blue2Red_SendMsg();
+//		 CAN_SetID2Blue2Red_SendMsg();
+//	 }
+//	 else if(time_2ms_count>2500&&(time_2ms_count+1100)%2500==0)
+//	 {
+//		 CAN_SetID0Red2Blue_SendMsg();
+//		 CAN_SetID1Red2Blue_SendMsg();
+//		 CAN_SetID2Red2Blue_SendMsg();
+//	 }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

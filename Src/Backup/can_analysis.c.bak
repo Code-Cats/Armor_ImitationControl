@@ -1,4 +1,5 @@
 #include "can_analysis.h"
+#include "hit_recognition.h"
 
 extern CAN_HandleTypeDef hcan;
 
@@ -91,52 +92,55 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	 CAN_RxHeaderTypeDef RxMessage1;
 	 CAN_RecvMsg can_recvmsg;
      HAL_CAN_GetRxMessage(hcan,CAN_RX_FIFO0,&RxMessage1,can_recvmsg.Data);
+	  
+	  CAN1_Hit_Analysis(&RxMessage1,&can_recvmsg);
+	  
      //printf("\r\n%s",can_recvmsg.Data);
-	  switch(RxMessage1.StdId)
-	  {
-		 case 0x201:	//右
-		{
-			can_test_count[0]++;
-			break;
-		}
-		case 0x202:	//左
-		{
-			can_test_count[1]++;
-			break;
-		}
-		case 0x203:	//shoot 上
-		{
-			can_test_count[2]++;
-			break;
-		}
-		case 0x204:	//空
-		{
-			can_test_count[3]++;
-			break;
-		}
-		case 0x205:	//yaw
-		{
-			can_test_count[4]++;
-			break;
-		}
-		case 0x206:	//pitch
-		{
-			can_test_count[5]++;
-			break;
-		}
-		case 0x207:	//shoot
-		{
-			can_test_count[6]++;
-			break;
-		}
-		case 0x404:	//外部发送ID
-		{
-			can_test_count[7]++;
-			break;
-		}
-		default:
-		break; 
-	  }
+////	  switch(RxMessage1.StdId)
+////	  {
+////		 case 0x201:	//右
+////		{
+////			can_test_count[0]++;
+////			break;
+////		}
+////		case 0x202:	//左
+////		{
+////			can_test_count[1]++;
+////			break;
+////		}
+////		case 0x203:	//shoot 上
+////		{
+////			can_test_count[2]++;
+////			break;
+////		}
+////		case 0x204:	//空
+////		{
+////			can_test_count[3]++;
+////			break;
+////		}
+////		case 0x205:	//yaw
+////		{
+////			can_test_count[4]++;
+////			break;
+////		}
+////		case 0x206:	//pitch
+////		{
+////			can_test_count[5]++;
+////			break;
+////		}
+////		case 0x207:	//shoot
+////		{
+////			can_test_count[6]++;
+////			break;
+////		}
+////		case 0x404:	//外部发送ID
+////		{
+////			can_test_count[7]++;
+////			break;
+////		}
+////		default:
+////		break; 
+////	  }
   }
 }
 

@@ -368,6 +368,26 @@ void CAN_SetID2Red2Blue_SendMsg(void)
 }
 
 /****************************************************
+name:CAN_SetID3Red2Blue_SendMsg //OK
+function:发送裁判转蓝灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+uint8_t RefereeID3SetRedToBlueData1[18]={0x5a, 0x02, 0x00, 0x00, 0x00, 0x01, 0x0b, 0x02  ,\
+							0x03, 0x01, 0x00, 0x04, 0x00, 0xf0, 0x01, 0x0b ,\
+							0x8e,0x19};	//OK
+uint8_t RefereeID3SetRedToBlueData2[20]={0x5a, 0x04, 0x00, 0x01, 0x00, 0x01, 0x0b, 0x02  ,\
+							0x03, 0x01, 0x00, 0x05, 0x00, 0x93, 0x00, 0x00 ,\
+							0xff, 0x00, 0xe3, 0x5a };	//OK
+void CAN_SetID3Red2Blue_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x143,RefereeID3SetRedToBlueData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x143,RefereeID3SetRedToBlueData2,20);
+}
+
+/****************************************************
 name:CAN_SetID0Blue2Red_SendMsg
 function:发送裁判转红灯数据
 @param:void
@@ -431,6 +451,26 @@ void CAN_SetID2Blue2Red_SendMsg(void)
 	CAN_SendNormalMsg(&hcan,0x142,RefereeID2SetBlueToRedData1,18);
 	HAL_Delay(1);
 	CAN_SendNormalMsg(&hcan,0x142,RefereeID2SetBlueToRedData2,20);
+}
+
+/****************************************************
+name:CAN_SetID3Blue2Red_SendMsg 待验证
+function:发送裁判转红灯数据
+@param:void
+@return:void
+description:将数据存入TxMessage结构体再由CAN_Transmit发送
+****************************************************/
+uint8_t RefereeID3SetBlueToRedData1[18]={0x5a, 0x02, 0x00, 0x00, 0x00, 0x01, 0x01, 0x02,\
+							0x03, 0x01, 0x00, 0x04, 0x00, 0x7b, 0x01, 0x01,\
+							0xf9, 0xa2};
+uint8_t RefereeID3SetBlueToRedData2[20]={0x5a, 0x04, 0x00, 0x01, 0x00, 0x01, 0x01, 0x02,\
+							0x03, 0x01, 0x00, 0x05, 0x00, 0x18, 0xff, 0x00,\
+							0x00, 0x00, 0x1f, 0xa5 };	//这个好像是全变红的//见1498行
+void CAN_SetID3Blue2Red_SendMsg(void)
+{
+	CAN_SendNormalMsg(&hcan,0x143,RefereeID3SetBlueToRedData1,18);
+	HAL_Delay(1);
+	CAN_SendNormalMsg(&hcan,0x143,RefereeID3SetBlueToRedData2,20);
 }
 
 ///////////////////////////////////////////待完善/////////////////////////////////////////////
