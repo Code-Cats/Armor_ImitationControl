@@ -58,11 +58,13 @@ void CAN_SetID0Blue2Red_SendMsg(void);
 void CAN_SetID1Blue2Red_SendMsg(void);
 void CAN_SetID2Blue2Red_SendMsg(void);
 void CAN_SetID3Blue2Red_SendMsg(void);
+void CAN_SetID4Blue2Red_SendMsg(void);
 
 void CAN_SetID0Red2Blue_SendMsg(void);
 void CAN_SetID1Red2Blue_SendMsg(void);
 void CAN_SetID2Red2Blue_SendMsg(void);
 void CAN_SetID3Red2Blue_SendMsg(void);
+void CAN_SetID4Red2Blue_SendMsg(void);
 	
 void CAN_SetAllRed2Blue_SendMsg(void);
 

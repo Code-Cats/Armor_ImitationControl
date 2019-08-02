@@ -130,17 +130,19 @@ int main(void)
 		 color_state=!color_state;
 		 if(color_state)
 		 {
-			CAN_SetID0Blue2Red_SendMsg();
-			CAN_SetID1Blue2Red_SendMsg();
-			CAN_SetID2Blue2Red_SendMsg();
+			 CAN_SetID0Blue2Red_SendMsg();
+			 CAN_SetID1Blue2Red_SendMsg();
+			 CAN_SetID2Blue2Red_SendMsg();
 			 CAN_SetID3Blue2Red_SendMsg();
+			 CAN_SetID4Blue2Red_SendMsg();
 		 }
 		 else
 		 {
-			CAN_SetID0Red2Blue_SendMsg();
-			CAN_SetID1Red2Blue_SendMsg();
-			CAN_SetID2Red2Blue_SendMsg();
+			 CAN_SetID0Red2Blue_SendMsg();
+			 CAN_SetID1Red2Blue_SendMsg();
+			 CAN_SetID2Red2Blue_SendMsg();
 			 CAN_SetID3Red2Blue_SendMsg();
+			 CAN_SetID4Red2Blue_SendMsg();
 		 }
 		 //change color
 		 
